@@ -1,0 +1,29 @@
+
+<app-navbar></app-navbar>
+<div class="body">
+<div class="location-booking-container">
+    <h2>Book Your Location</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="location">Select Location:</label>
+        <select id="location" [(ngModel)]="booking.location" name="location" required>
+          <option *ngFor="let location of locations" [value]="location">{{location}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" [(ngModel)]="booking.date" name="date" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="details">Additional Details:</label>
+        <textarea id="details" [(ngModel)]="booking.details" name="details"></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Book Now</button>
+    </form>
+  </div>
+</div>
+  
+
