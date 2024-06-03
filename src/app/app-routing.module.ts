@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AngularFireModule } from '@angular/fire/compat'
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { LoginComponent } from './userDetails/login/login.component';
 import { RegisterComponent } from './userDetails/register/register.component';
 import { HomeComponent } from './home/home.component';

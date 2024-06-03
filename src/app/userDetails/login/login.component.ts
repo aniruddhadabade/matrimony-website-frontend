@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       (data) => {
         if (data && data.password === loginInfo.password) {
           this.showToast('success', 'Signed in successfully');
-          this.router.navigate(['/home']);
+          this.router.navigate(['/page']);
         } else {
           this.showToast('error', 'Incorrect username or password');
         }

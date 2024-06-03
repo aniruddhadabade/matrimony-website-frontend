@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit{
     if (typeof window !== 'undefined') {
       sessionStorage.removeItem('loggedInUser'); // Clear session storage
     }
-    this.router.navigate(['']); // Navigate to home page after logout
+    this.router.navigate(['']); 
   }
 
   ngOnInit(): void {

@@ -28,9 +28,6 @@ export class GroomsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    personalInfos: this.personalInfoService.getAllPersonalInfo()
-    
-
     forkJoin({
       userInfo: this.userService.getAllUser(), 
       educationCareers: this.educationCareerService.getAllEducation(),
@@ -38,7 +35,6 @@ export class GroomsComponent implements OnInit {
       personalInfos: this.personalInfoService.getAllPersonalInfo()
     }).subscribe(({ userInfo, educationCareers, familyInfos, personalInfos }) => {
       this.users = userInfo.filter(userInfo => userInfo.gender === 'Male').map(user => {
-        console.log(educationCareers)
         const educationCareer = educationCareers.find(ec => ec.registration.rid === user.registration.rid);
         const familyInfo = familyInfos.find(fi => fi.registration.rid === user.registration.rid);
         const personalInfo = personalInfos.find(pi => pi.registration.rid === user.registration.rid);
