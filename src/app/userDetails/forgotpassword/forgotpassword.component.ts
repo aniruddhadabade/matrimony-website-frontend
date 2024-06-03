@@ -43,6 +43,7 @@ export class ForgotpasswordComponent implements OnInit {
             text: 'A reset link has been sent to your email.',
             icon: 'success'
           });
+          this.forgotForm.reset();
         },
         (error: EmailJSResponseStatus) => {
           Swal.fire({
