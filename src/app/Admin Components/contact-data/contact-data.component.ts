@@ -5,9 +5,9 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-contact-data',
   templateUrl: './contact-data.component.html',
-  styleUrl: './contact-data.component.css'
+  styleUrls: ['./contact-data.component.css']
 })
-export class ContactDataComponent implements OnInit{
+export class ContactDataComponent implements OnInit {
 
   contacts: any[] = [];
 
@@ -20,6 +20,7 @@ export class ContactDataComponent implements OnInit{
   fetchContactInfo(): void {
     this.contactService.getAllContacts().subscribe(
       data => {
+        console.log('Fetched contacts:', data); // Log the fetched data
         this.contacts = data;
       },
       error => {
@@ -28,9 +29,14 @@ export class ContactDataComponent implements OnInit{
     );
   }
 
-  deleteContact(id: number): void {
-    console.log('Attempting to delete user with ID:', id); // Add this line for debugging
-  
+  deleteContact(contactId: number): void {
+    console.log('Attempting to delete user with ID:', contactId); // Log the ID
+
+    if (contactId === undefined || contactId === null) {
+      console.error('Invalid ID:', contactId);
+      return;
+    }
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -39,10 +45,10 @@ export class ContactDataComponent implements OnInit{
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.contactService.deleteContact(id).subscribe(
+        this.contactService.deleteContact(contactId).subscribe(
           () => {
             Swal.fire('Deleted!', 'User has been deleted.', 'success');
-            this.removeLocalContact(id); // Remove user from local list
+            this.removeLocalContact(contactId); // Remove user from local list
           },
           error => {
             Swal.fire('Error!', 'Error deleting user.', 'error');
@@ -53,9 +59,8 @@ export class ContactDataComponent implements OnInit{
     });
   }
 
-  
-  removeLocalContact(id: number): void {
-    this.contacts = this.contacts.filter(contact => contact.id !== id);
+  removeLocalContact(contactId: number): void {
+    this.contacts = this.contacts.filter(contact => contact.contactId !== contactId);
   }
 
 }
