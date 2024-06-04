@@ -1,24 +1,33 @@
 <div class="body">
-    <div class="location-booking-container">
-      <h2>Chat With Your Soulmate</h2>
-      <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          Name:<br>
-          <input type="text" formControlName="name"><br>
+  <div class="location-booking-container">
+    <h2>Chat With Your Soulmate</h2>
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="fromUsername">From Username:</label><br>
+        <input type="text" id="fromUsername" formControlName="fromUsername"><br>
+        <div *ngIf="chatForm.controls['fromUsername'].touched && !chatForm.controls['fromUsername'].valid">
+          <small>From Username is required.</small>
         </div>
-    
-        <div class="form-group">
-          E-mail:<br>
-          <input type="text" formControlName="mail"><br>
-        </div>
-    
-        <div class="form-group">
-          Message:<br>
-          <textarea formControlName="comment" rows="4" cols="50"></textarea><br><br>
-        </div>
+      </div>
   
-        <button type="submit" class="btn btn-primary">Send</button>
-        <button type="button" (click)="onClear()" class="btn btn-primary">Clear</button>
-      </form>
-    </div>
+      <div class="form-group">
+        <label for="toUsername">To Username:</label><br>
+        <input type="text" id="toUsername" formControlName="toUsername"><br>
+        <div *ngIf="chatForm.controls['toUsername'].touched && !chatForm.controls['toUsername'].valid">
+          <small>To Username is required.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="message">Message:</label><br>
+        <textarea id="message" formControlName="message" rows="4" cols="50"></textarea><br><br>
+        <div *ngIf="chatForm.controls['message'].touched && !chatForm.controls['message'].valid">
+          <small>Message is required.</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Send</button>
+      <button type="button" (click)="onClear()" class="btn btn-primary">Clear</button>
+    </form>
+  </div>
 </div>

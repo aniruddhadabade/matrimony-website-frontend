@@ -33,13 +33,15 @@ import { withFetch } from '@angular/common/http';
 import { ROUTES, RouterModule } from '@angular/router';
 import App from 'next/app';
 import { ResetPasswordComponent } from './userDetails/reset-password/reset-password.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './Admin Components/admin/admin.component';
 import { LocationBookingComponent } from './location-booking/location-booking.component';
 import { GroomsComponent } from './websiteServices/grooms/grooms.component';
 import { BridesComponent } from './websiteServices/brides/brides.component';
 import { BrideInformationComponent } from './websiteServices/bride-information/bride-information.component';
 import { DifferentiatorComponent } from './websiteServices/differentiator/differentiator.component';
 import { ChatComponent } from './websiteServices/chat/chat.component';
+import { ContactDataComponent } from './Admin Components/contact-data/contact-data.component';
+import { MessageDataComponent } from './Admin Components/message-data/message-data.component';
 
 
 
@@ -76,6 +78,8 @@ import { ChatComponent } from './websiteServices/chat/chat.component';
     BrideInformationComponent,
     DifferentiatorComponent,
     ChatComponent,
+    ContactDataComponent,
+    MessageDataComponent,
   ],
   imports: [
     BrowserModule,

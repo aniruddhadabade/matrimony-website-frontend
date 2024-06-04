@@ -21,13 +21,15 @@ import { Service1Component } from './websiteServices/service1/service1.component
 import { Contact1Component } from './contactt/contact1/contact1.component';
 import { GroomInformationComponent } from './websiteServices/groom-information/groom-information.component';
 import { ResetPasswordComponent } from './userDetails/reset-password/reset-password.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './Admin Components/admin/admin.component';
 import { LocationBookingComponent } from './location-booking/location-booking.component';
 import { GroomsComponent } from './websiteServices/grooms/grooms.component';
 import { BridesComponent } from './websiteServices/brides/brides.component';
 import { BrideInformationComponent } from './websiteServices/bride-information/bride-information.component';
 import { DifferentiatorComponent } from './websiteServices/differentiator/differentiator.component';
 import { ChatComponent } from './websiteServices/chat/chat.component';
+import { MessageDataComponent } from './Admin Components/message-data/message-data.component';
+import { ContactDataComponent } from './Admin Components/contact-data/contact-data.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -55,7 +57,9 @@ const routes: Routes = [
   { path: 'brides', component: BridesComponent},
   { path: 'brides/bride-info', component: BrideInformationComponent},
   { path: 'page', component: DifferentiatorComponent},
-  { path: 'chat', component: ChatComponent}
+  { path: 'chat', component: ChatComponent},
+  { path: 'message', component: MessageDataComponent},
+  { path: 'admin/contactinfo', component: ContactDataComponent}
 ];
 
 @NgModule({

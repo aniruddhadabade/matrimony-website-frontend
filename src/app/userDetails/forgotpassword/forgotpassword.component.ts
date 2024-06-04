@@ -35,7 +35,7 @@ export class ForgotpasswordComponent implements OnInit {
       return;
     }
 
-    emailjs.sendForm('service_6ne85fq', 'template_4zefcsq', e.target as HTMLFormElement, 'PbGGXMcZx7RmQNdbx')
+    emailjs.sendForm('service_idpscjs', 'template_qqs6a7l', e.target as HTMLFormElement, 'nru92-XPNoTwqzAhH')
       .then(
         (result: EmailJSResponseStatus) => {
           Swal.fire({

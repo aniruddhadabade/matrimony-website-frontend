@@ -28,7 +28,7 @@ export class ContactinfoService {
     return this.httpClient.put<ContactInfo>(`${this.baseUrl}/${id}`, contact);
   }
 
-  deleteContact(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
+  deleteContact(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.baseUrl}/${id}`);
   }
 }

@@ -49,11 +49,20 @@
                     <div class="card-head"><h2>{{ totalBrides }}</h2><span class="las la-female"></span></div>
                     <div class="card-progress"><small>Total Brides</small><div class="card-indicator"><div class="indicator three" style="width: 100%"></div></div></div>
                   </div>
+                  <a [routerLink]="['/message']" class="card-link">
                   <div class="card">
-                    <div class="card-head"><h2>47,500</h2><span class="las la-envelope"></span></div>
+                    <div class="card-head"><h2>{{ totalMessages }}</h2><span class="las la-envelope"></span></div>
                     <div class="card-progress"><small>New messages received</small><div class="card-indicator"><div class="indicator four" style="width: 90%"></div></div></div>
                   </div>
+                </a>
+                <a [routerLink]="['/admin/contactinfo']" class="card-link">
+                <div class="card">
+                  <div class="card-head"><h2>{{ totalQueries }}</h2><span class="las la-envelope"></span></div>
+                  <div class="card-progress"><small>New Queries received</small><div class="card-indicator"><div class="indicator four" style="width: 90%"></div></div></div>
+                </div>
+              </a>
               </div>
+              
 
               <div class="records table-responsive">
                   <div class="record-header">

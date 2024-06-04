@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { UserinfoService } from '../services/userinfo.service';
+import { UserinfoService } from '../../services/userinfo.service';
 import { Router } from '@angular/router';
+import { MessageService } from '../../services/message.service';
+import { ContactinfoService } from '../../services/contactinfo.service';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin.component.html',
@@ -12,12 +14,16 @@ export class AdminComponent implements OnInit{
   totalGrooms: number = 0;
   totalBrides: number = 0;
   totalRegistrations: number = 0;
+  totalMessages: number = 0;
+  totalQueries: number = 0;
 
-  constructor(private userService: UserinfoService, private router: Router) {}
+  constructor(private userService: UserinfoService, private messageService: MessageService, private contactService: ContactinfoService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchUsers();
     this.fetchDashboardData();
+    this.fetchTotalMessages();
+    this.fetchtotalQueries();
   }
 
   fetchUsers(): void {
@@ -48,6 +54,28 @@ export class AdminComponent implements OnInit{
       },
       (error) => {
         console.error('Error fetching dashboard data:', error);
+      }
+    );
+  }
+
+  fetchTotalMessages(): void { // Method to fetch total messages
+    this.messageService.getMessages().subscribe(
+      (messages: any[]) => {
+        this.totalMessages = messages.length;
+      },
+      (error) => {
+        console.error('Error fetching messages:', error);
+      }
+    );
+  }
+
+  fetchtotalQueries(): void { // Method to fetch total messages
+    this.contactService.getAllContacts().subscribe(
+      (contacts: any[]) => {
+        this.totalQueries = contacts.length;
+      },
+      (error) => {
+        console.error('Error fetching messages:', error);
       }
     );
   }
