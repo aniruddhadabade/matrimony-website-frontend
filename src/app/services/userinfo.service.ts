@@ -34,24 +34,6 @@ export class UserinfoService {
     return this.httpClient.get<UserInfo[]>(this.baseUrl);
   }
 
-    // admin
-
-    getAdmin(): Observable<any> {
-      return this.httpClient.get<any>(this.baseUrl);
-    }
-  
-    registerUser(user: any): Observable<any> {
-      return this.httpClient.post<any>(this.baseUrl, user);
-    }
-  
-    updateUser(userInfo: UserInfo): Observable<any> {
-      return this.httpClient.put(`${this.baseUrl}/${userInfo.userId}`, userInfo);
-    }
-
-    deleteUser(userId: number): Observable<any> {
-      // Ensure the correct endpoint and method are used for deletion
-      return this.httpClient.delete(`${this.baseUrl}/${userId}`);
-    }
 
 }
 

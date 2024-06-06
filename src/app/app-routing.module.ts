@@ -30,6 +30,7 @@ import { DifferentiatorComponent } from './websiteServices/differentiator/differ
 import { ChatComponent } from './websiteServices/chat/chat.component';
 import { MessageDataComponent } from './Admin Components/message-data/message-data.component';
 import { ContactDataComponent } from './Admin Components/contact-data/contact-data.component';
+import { RegistrationDataComponent } from './Admin Components/registration-data/registration-data.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -59,7 +60,8 @@ const routes: Routes = [
   { path: 'page', component: DifferentiatorComponent},
   { path: 'chat', component: ChatComponent},
   { path: 'message', component: MessageDataComponent},
-  { path: 'admin/contactinfo', component: ContactDataComponent}
+  { path: 'admin/contactinfo', component: ContactDataComponent},
+  { path: 'admin/registrationinfo', component: RegistrationDataComponent}
 ];
 
 @NgModule({

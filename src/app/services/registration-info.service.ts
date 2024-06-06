@@ -30,6 +30,10 @@ export class RegistrationInfoService {
     return this.httpClient.get<RegistrationInfo>(url);
   }
 
+  getAllRegistrations(): Observable<RegistrationInfo[]> {
+    return this.httpClient.get<RegistrationInfo[]>(this.baseUrl);
+  }
+
   findByUserName(userName: string): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/username/${userName}`);
   }

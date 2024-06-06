@@ -68,5 +68,5 @@ export class BridesComponent implements OnInit{
     this.router.navigate(['brides/bride-info'], {
       state: { user }
     });
-}
+  }
 }

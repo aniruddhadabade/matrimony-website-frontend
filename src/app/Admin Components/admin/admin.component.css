@@ -434,6 +434,7 @@ table tbody td:first-child {
     color: var(--main-color);
     font-weight: 600;
     font-size: .9rem;
+    
 }
 
 table tbody tr {
@@ -485,17 +486,17 @@ table tbody tr {
     transition: background-color 0.3s ease;
   }
   
-  .actions .update {
-    background-color: #28a745; /* Green background */
+  .actions .info {
+    background-color: #5e81e0; /* Green background */
     color: white; /* White text */
   }
   
-  .actions .update:hover {
-    background-color: #218838; /* Darker green on hover */
+  .actions .info:hover {
+    background-color: #0069cb; /* Darker green on hover */
   }
   
   .actions .delete {
-    background-color: #dc3545; /* Red background */
+    background-color: #de4e5d; /* Red background */
     color: white; /* White text */
   }
   

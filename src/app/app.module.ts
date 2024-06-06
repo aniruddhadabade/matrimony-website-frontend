@@ -42,6 +42,7 @@ import { DifferentiatorComponent } from './websiteServices/differentiator/differ
 import { ChatComponent } from './websiteServices/chat/chat.component';
 import { ContactDataComponent } from './Admin Components/contact-data/contact-data.component';
 import { MessageDataComponent } from './Admin Components/message-data/message-data.component';
+import { RegistrationDataComponent } from './Admin Components/registration-data/registration-data.component';
 
 
 
@@ -80,6 +81,7 @@ import { MessageDataComponent } from './Admin Components/message-data/message-da
     ChatComponent,
     ContactDataComponent,
     MessageDataComponent,
+    RegistrationDataComponent,
   ],
   imports: [
     BrowserModule,
