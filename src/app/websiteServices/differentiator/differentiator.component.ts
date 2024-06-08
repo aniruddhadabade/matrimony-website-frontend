@@ -76,9 +76,9 @@ export class DifferentiatorComponent implements OnInit {
         this.users = userInfo
           .filter(user => user.gender !== this.gender)
           .map(user => {
-            const educationCareer = educationCareers.find(ec => ec.registration.rid === user.registration.rid);
-            const familyInfo = familyInfos.find(fi => fi.registration.rid === user.registration.rid);
-            const personalInfo = personalInfos.find(pi => pi.registration.rid === user.registration.rid);
+            const educationCareer = educationCareers.find(ec => ec?.registration?.rid === user.registration.rid);
+            const familyInfo = familyInfos.find(fi => fi?.registration?.rid === user.registration.rid);
+            const personalInfo = personalInfos.find(pi => pi?.registration?.rid === user.registration.rid);
             return {
               firstName: user.firstName,
               lastName: user.lastName,
@@ -98,13 +98,14 @@ export class DifferentiatorComponent implements OnInit {
               personalInfo: personalInfo || null
             };
           });
-        console.log(this.users);
+        console.log(this.registration?.rid);
       },
       (error) => {
         console.error('Error fetching combined info:', error);
       }
     );
   }
+  
 
   viewDetails(user: any): void {
     const targetRoute = this.gender === 'Male' ? 'brides/bride-info' : 'grooms/groom-info';

@@ -39,10 +39,9 @@ export class RegistrationInfoService {
   }
 
   updateRegistration(id: number, updatedInfo: RegistrationInfo): Observable<RegistrationInfo> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.put<RegistrationInfo>(url, updatedInfo);
+    return this.httpClient.put<RegistrationInfo>(`${this.baseUrl}/${id}`, updatedInfo);
   }
-
+  
   deleteUser(rid: number): Observable<any>{
     return this.httpClient.delete(`${this.baseUrl}/${rid}`)
   }

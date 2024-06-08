@@ -86,9 +86,9 @@
                         </thead>
                         <tbody>
                           <tr *ngFor="let user of users">
-                            <td>{{ user.firstName }} {{ user.lastName }}</td>
-                            <td>{{ user.age }}</td>
-                            <td>{{ user.dateOfBirth }}</td>
+                            <td>{{ user?.firstName }} {{ user?.lastName }}</td>
+                            <td>{{ user?.age }}</td>
+                            <td>{{ user?.dateOfBirth }}</td>
                             <td>
                               <div class="actions">
                                 <button class="delete" (click)="deleteUser($event, user.registration.rid)">Delete</button>

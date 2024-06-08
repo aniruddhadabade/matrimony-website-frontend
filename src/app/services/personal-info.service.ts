@@ -25,4 +25,9 @@ export class PersonalInfoService {
   getAllPersonalInfo(): Observable<PersonalInfo[]> {
     return this.httpClient.get<PersonalInfo[]>(this.baseUrl);
   }
+
+  updatePersonalInfo(id: number, personalInfo: PersonalInfo): Observable<PersonalInfo> {
+    return this.httpClient.put<PersonalInfo>(`${this.baseUrl}/${id}`, personalInfo);
+  }
+ 
 }

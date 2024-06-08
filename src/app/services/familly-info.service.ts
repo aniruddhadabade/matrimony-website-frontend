@@ -28,7 +28,7 @@ export class FamillyInfoService {
   updateFamilyInfo(id: number, familyInfo: FamilyInfo): Observable<FamilyInfo> {
     return this.httpClient.put<FamilyInfo>(`${this.baseUrl}/${id}`, familyInfo);
   }
-
+ 
   // Method to delete user info
   deleteFamilyInfo(id: number): Observable<any> {
     return this.httpClient.delete(`${this.baseUrl}/${id}`);

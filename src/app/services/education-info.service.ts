@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EducationInfo } from '../models/educationInfo';
 
 @Injectable({
@@ -20,15 +20,12 @@ export class EducationInfoService {
     return this.httpClient.get<EducationInfo[]>(this.baseUrl);
   }
 
-  updateEducationInfo(id: number, eduInfo: any): Observable<any> {
-    return this.httpClient.put<EducationInfo>(`${this.baseUrl}/${id}`, eduInfo);
+  updateEducationInfo(rid: number, educationInfo: EducationInfo): Observable<EducationInfo> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.httpClient.put<EducationInfo>(`${this.baseUrl}/${rid}`, educationInfo, { headers });
   }
-
+  
   deleteEducationInfo(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
   }
-  
-
-
-
 }

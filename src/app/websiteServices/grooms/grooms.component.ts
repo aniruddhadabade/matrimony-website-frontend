@@ -22,10 +22,9 @@ export class GroomsComponent implements OnInit {
     private educationCareerService: EducationInfoService,
     private familyInfoService: FamillyInfoService,
     private personalInfoService: PersonalInfoService,
-    private router : Router,
+    private router: Router,
     private route: ActivatedRoute
   ) {}
-
 
   ngOnInit(): void {
     forkJoin({
@@ -35,16 +34,17 @@ export class GroomsComponent implements OnInit {
       personalInfos: this.personalInfoService.getAllPersonalInfo()
     }).subscribe(({ userInfo, educationCareers, familyInfos, personalInfos }) => {
       this.users = userInfo.filter(userInfo => userInfo.gender === 'Male').map(user => {
-        const educationCareer = educationCareers.find(ec => ec.registration.rid === user.registration.rid);
-        const familyInfo = familyInfos.find(fi => fi.registration.rid === user.registration.rid);
-        const personalInfo = personalInfos.find(pi => pi.registration.rid === user.registration.rid);
+        const educationCareer = educationCareers.find(ec => ec.registration?.rid === user.registration?.rid);
+        const familyInfo = familyInfos.find(fi => fi.registration?.rid === user.registration?.rid);
+        const personalInfo = personalInfos.find(pi => pi.registration?.rid === user.registration?.rid);
+        
         return {
           firstName: user.firstName,
           lastName: user.lastName,
           age: user.age,
           dateOfBirth: user.dateOfBirth,
           gender: user.gender,
-          email: user.registration.email,
+          email: user.registration?.email || 'Not available',
           educationCareer: {
             educationLevel: educationCareer?.educationLevel || 'Not available',
             educationFiled: educationCareer?.educationFiled || 'Not available'
@@ -54,10 +54,14 @@ export class GroomsComponent implements OnInit {
             familyType: familyInfo?.familyType || 'Not available',
             fatherName: familyInfo?.fatherName || 'Not available'
           },
-          personalInfo: personalInfo || null
+          personalInfo: {
+            bloodGroup: personalInfo?.bloodGroup || 'Not available',
+            photograph: personalInfo?.photograph || 'Not available'
+          }
         };
-        
       });
+    }, (error) => {
+      console.error('Error fetching combined info:', error);
     });
   }
 
@@ -65,5 +69,6 @@ export class GroomsComponent implements OnInit {
     this.router.navigate(['grooms/groom-info'], {
       state: { user }
     });
+  }
 }
-}
+

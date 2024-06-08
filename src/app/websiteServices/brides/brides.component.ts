@@ -28,9 +28,6 @@ export class BridesComponent implements OnInit{
 
 
   ngOnInit(): void {
-    personalInfos: this.personalInfoService.getAllPersonalInfo()
-    
-
     forkJoin({
       userInfo: this.userService.getAllUser(), 
       educationCareers: this.educationCareerService.getAllEducation(),
@@ -38,16 +35,16 @@ export class BridesComponent implements OnInit{
       personalInfos: this.personalInfoService.getAllPersonalInfo()
     }).subscribe(({ userInfo, educationCareers, familyInfos, personalInfos }) => {
       this.users = userInfo.filter(userInfo => userInfo.gender === 'Female').map(user => {
-        console.log(educationCareers)
-        const educationCareer = educationCareers.find(ec => ec.registration.rid === user.registration.rid);
-        const familyInfo = familyInfos.find(fi => fi.registration.rid === user.registration.rid);
-        const personalInfo = personalInfos.find(pi => pi.registration.rid === user.registration.rid);
+        const educationCareer = educationCareers.find(ec => ec?.registration?.rid === user.registration?.rid);
+        const familyInfo = familyInfos.find(fi => fi?.registration?.rid === user.registration?.rid);
+        const personalInfo = personalInfos.find(pi => pi?.registration?.rid === user.registration?.rid);
+        
         return {
           firstName: user.firstName,
           lastName: user.lastName,
           age: user.age,
-          gender: user.gender,
           dateOfBirth: user.dateOfBirth,
+          gender: user.gender,
           email: user.registration.email,
           educationCareer: {
             educationLevel: educationCareer?.educationLevel || 'Not available',
@@ -58,9 +55,15 @@ export class BridesComponent implements OnInit{
             familyType: familyInfo?.familyType || 'Not available',
             fatherName: familyInfo?.fatherName || 'Not available'
           },
-          personalInfo: personalInfo || null
+          personalInfo: {
+            bloodGroup: personalInfo?.bloodGroup || 'Not available',
+            photograph: personalInfo?.photograph || 'Not available',
+          },
         };
+        
       });
+    }, (error) => {
+      console.error('Error fetching combined info:', error);
     });
   }
 
@@ -68,5 +71,5 @@ export class BridesComponent implements OnInit{
     this.router.navigate(['brides/bride-info'], {
       state: { user }
     });
-  }
+}
 }
