@@ -23,10 +23,12 @@
                         <div class="row">
                             <div class="col-lg-4 px-5 text-center profile-img-section">
                                 <img *ngIf="userInfo?.personalInfo?.photograph"[src]="'data:image/jpeg;base64,' + userInfo.personalInfo.photograph" id="image_preview" class="img-fluid profile-img img-thumbnail">
+                                <!-- In profile-info.component.html -->
                                 <div>
-                                    <label for="picture" class="form-label">Change Profile Picture</label>
-                                    <input type="file" name="picture" id="picture" class="form-control rounded-pill">
+                                    <label for="profileImage" class="form-label">Change Profile Picture</label>
+                                    <input id="profileImage" type="file" (change)="handleFileInput($event)" />
                                 </div>
+  
                             </div>
                             <div class="col-lg-8 px-5">
                                 <form action="#" method="post" id="profile_form" (ngSubmit)="updateProfile()">
@@ -71,12 +73,31 @@
                                     <div class="row my-2">
                                         <div class="col-md-6">
                                             <label for="familyType" class="form-label">Family Type</label>
+                                            <select name="familyType" id="familyType" class="form-control rounded-0" [(ngModel)]="userInfo.familyInfo.familyType" [disabled]="!isLoggedIn" required>
+                                              <option value="" disabled selected>Select Family Type</option>
+                                              <option value="Nuclear">Nuclear</option>
+                                              <option value="Extended">Extended</option>
+                                            </select>
+                                        </div>                                          
+                                        <div class="col-md-6">
+                                            <label for="familyStatus" class="form-label">Family Status</label>
+                                            <select name="familyStatus" id="familyStatus" class="form-control rounded-0" [(ngModel)]="userInfo.familyInfo.familyStatus" [disabled]="!isLoggedIn">
+                                              <option value="" disabled selected>Select Family Status</option>
+                                              <option value="Middle Class">Middle Class</option>
+                                              <option value="Upper Middle Class">Upper Middle Class</option>
+                                              <option value="Rich">Rich</option>
+                                            </select>
+                                          </div>
+                                          
+                                      <!--
+                                        <div class="col-md-6">
+                                            <label for="familyType" class="form-label">Family Type</label>
                                             <input type="text" name="familyType" id="familyType" class="form-control rounded-0" [(ngModel)]="userInfo.familyInfo.familyType" [disabled]="!isLoggedIn">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="familyStatus" class="form-label">Family Status</label>
                                             <input type="text" name="familyStatus" id="familyStatus" class="form-control rounded-0" [(ngModel)]="userInfo.familyInfo.familyStatus" [disabled]="!isLoggedIn">
-                                        </div>
+                                        </div>-->  
                                     </div>
                                     <div class="row my-2">
                                         <div class="col-md-6">
@@ -88,7 +109,7 @@
                                             <input type="text" name="educationFiled" id="educationFiled" class="form-control rounded-0" [(ngModel)]="userInfo.educationCareer.educationFiled" [disabled]="!isLoggedIn">
                                         </div>
                                     </div>
-                                    <div class="row my-2">
+                                    <!--<div class="row my-2">
                                         <div class="col-md-6">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="email" name="email" id="email" class="form-control rounded-0" [(ngModel)]="userInfo.registrationInfo.email" [disabled]="!isLoggedIn">
@@ -107,7 +128,8 @@
                                               </span>
                                             </div>
                                           </div>                                            
-                                    </div>
+                                    </div>-->
+                                    
                                     <div class="my-2">
                                         <input
                                           type="submit"

@@ -40,7 +40,7 @@ export class ProfileInfoComponent implements OnInit {
     },
     personalInfo: {
       bloodGroup: '',
-      photograph: '',
+      photograph: null,
       id: null
     },
     registrationInfo: {
@@ -52,7 +52,7 @@ export class ProfileInfoComponent implements OnInit {
     registration: null
   };
   passwordVisible: boolean = false;
-
+  selectedFile: File | null = null;
   constructor(
     private router: Router,
     private userService: UserinfoService,
@@ -128,13 +128,19 @@ export class ProfileInfoComponent implements OnInit {
     const educationCareerId = this.userInfo.educationCareer.id;
     const familyInfoId = this.userInfo.familyInfo.id;
     const personalInfoId = this.userInfo.personalInfo.id;
-
+    const originalUserInfo = JSON.parse(JSON.stringify(this.userInfo));
+    const formData = new FormData();
+    formData.append('bloodGroup', this.userInfo.personalInfo.bloodGroup);
+    formData.append('registration', JSON.stringify(this.userInfo.registrationInfo));
+    if (this.selectedFile) {
+      formData.append('file', this.selectedFile);
+    }
     forkJoin({
       registrationInfo: this.registrationInfoService.updateRegistration(rid, this.userInfo.registrationInfo),
       userInfo: this.userService.updateUserInfo(rid, this.userInfo),
       educationCareers: this.educationCareerService.updateEducationInfo(rid, this.userInfo.educationCareer),
       familyInfos: this.familyInfoService.updateFamilyInfo(rid, this.userInfo.familyInfo),
-      personalInfos: this.personalInfoService.updatePersonalInfo(personalInfoId, this.userInfo.personalInfo)
+      personalInfos: this.personalInfoService.updatePersonalInfo(rid, formData)
     }).subscribe({
       next: ({
         registrationInfo,
@@ -169,7 +175,7 @@ export class ProfileInfoComponent implements OnInit {
           },
           personalInfo: {
             bloodGroup: personalInfos?.bloodGroup || 'Not available',
-            photograph: personalInfos?.photograph || 'Not available',
+            photograph: personalInfos?.photograph || null,
             id: personalInfos?.id
           },
           registrationInfo: {
@@ -181,6 +187,7 @@ export class ProfileInfoComponent implements OnInit {
           registration: registrationInfo
         };
 
+        const hasChanges = JSON.stringify(originalUserInfo) !== JSON.stringify(this.userInfo);
         if (!this.userInfo.educationCareer.id) {
           console.error('Education career ID is missing:', this.userInfo.educationCareer);
         }
@@ -191,7 +198,11 @@ export class ProfileInfoComponent implements OnInit {
           console.error('Personal info ID is missing:', this.userInfo.personalInfo);
         }
 
-        Swal.fire('Success', 'Profile updated successfully', 'success');
+        if (hasChanges) {
+          Swal.fire('Success', 'Profile updated successfully', 'success');
+        } else {
+          Swal.fire('Info', 'No changes were made to the profile', 'info');
+        }
       },
       error: (error) => {
         console.error('Error updating profile:', error);
@@ -202,11 +213,13 @@ export class ProfileInfoComponent implements OnInit {
     Swal.fire('Error', 'User is not logged in', 'error');
   }
 }
-  
 
- 
-  
+handleFileInput(event: any) {
+  const file = event.target.files[0];
+  this.selectedFile = file;
+}
 
+  
   logout() {
     if (typeof window !== 'undefined') {
       sessionStorage.removeItem('loggedInUser'); // Clear session storage
