@@ -47,9 +47,20 @@
                 <strong>Blood Group:</strong> {{ user.personalInfo.bloodGroup }}
               </li>
             </ul>
+            <form id="interestForm" style="display:none;">
+              <input type="text" name="loggedInUser" [value]="loggedInUser" />
+              <input type="text" name="firstName" [value]="user?.firstName" />
+              <input type="text" name="lastName" [value]="user?.lastName" />
+              <input type="text" name="email" [value]="user?.email" />
+            </form>
+    
+    
+            
             <div class="buttons-container mt-3">
               <button class="btn btn-primary mr-2" routerLink="/chat" >Chat</button>
-              <button class="btn btn-secondary" (click)="approveRequest()">Interest</button>
+              <button type="button" class="btn btn-secondary" [disabled]="interestBtnDisabled" (click)="onClick($event)">
+                {{intrestButton}} <i class="fa fa-check"></i>
+              </button>
             </div>
           </div>
         </div>

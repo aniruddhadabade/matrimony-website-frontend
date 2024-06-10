@@ -29,7 +29,7 @@ export class UserInfoComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       age: ['', Validators.required],
-      dateOfBirth: ['',Validators.required],
+      dateOfBirth: [Date,Validators.required],
       gender: ['',Validators.required]
     });
   }
@@ -47,7 +47,7 @@ export class UserInfoComponent implements OnInit {
         firstName: this.userForm.value.firstName,
         lastName: this.userForm.value.lastName,
         age: this.userForm.value.age,
-        dateOfBirth: new Date(), 
+        dateOfBirth: this.userForm.value.dateOfBirth, 
         gender: this.userForm.value.gender,
         registration: this.registration,// Instantiate a Date object here
       };

@@ -24,7 +24,7 @@ export class ProfileInfoComponent implements OnInit {
     firstName: '',
     lastName: '',
     age: null,
-    dateOfBirth: '',
+    dateOfBirth: Date,
     gender: '',
     email: '',
     educationCareer: {
@@ -33,8 +33,8 @@ export class ProfileInfoComponent implements OnInit {
       id: null
     },
     familyInfo: {
-      familyStatus: '',
       familyType: '',
+      familyStatus: '',
       fatherName: '',
       id: null
     },

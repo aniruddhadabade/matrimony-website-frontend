@@ -73,10 +73,10 @@
                                     <div class="row my-2">
                                         <div class="col-md-6">
                                             <label for="familyType" class="form-label">Family Type</label>
-                                            <select name="familyType" id="familyType" class="form-control rounded-0" [(ngModel)]="userInfo.familyInfo.familyType" [disabled]="!isLoggedIn" required>
+                                            <select name="familyType" id="familyType" class="form-control rounded-0" [(ngModel)]="userInfo?.familyInfo.familyType" [disabled]="!isLoggedIn">
                                               <option value="" disabled selected>Select Family Type</option>
                                               <option value="Nuclear">Nuclear</option>
-                                              <option value="Extended">Extended</option>
+                                              <option value="Joint Family">Joint Family</option>
                                             </select>
                                         </div>                                          
                                         <div class="col-md-6">

@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
             confirmButtonText: 'OK'
           });
 
-          emailjs
+        /*  emailjs
           .sendForm('service_idpscjs', 'template_qp6gco9', e.target as HTMLFormElement , {
             publicKey: 'nru92-XPNoTwqzAhH',
               }
@@ -62,7 +62,8 @@ export class RegisterComponent implements OnInit {
               }
             );
 
-          this.router.navigate(['/verify-email']);
+          this.router.navigate(['/verify-email']);*/
+           this.router.navigate(['/user', this.registrationForm.value.userName] );
         },
         (error) => {
           console.error('Error during registration:', error);

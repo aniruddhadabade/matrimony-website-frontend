@@ -19,8 +19,47 @@ export class BrideInformationComponent implements OnInit{
     this.loggedInUser = sessionStorage.getItem('loggedInUser');
     console.log(this.loggedInUser);
   }
+  chatBtnDisabled = true;
+  interestBtnDisabled = false;
+  intrestButton = 'Share Interest';
 
-  private serviceID: string = 'service_rh4ook3';
+  onClick(e:Event){
+    this.chatBtnDisabled = false;
+    this.interestBtnDisabled = true;
+    this.intrestButton = 'Interest Shared';
+
+    //sweet alert
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: 'success',
+      title: 'Interest Shared Successfully',
+    });
+
+    //Email verification
+    const form = document.getElementById('interestForm') as HTMLFormElement;
+    emailjs.sendForm('service_rh4ook3', 'template_pvao5ik', form, 'Rra6DMv3qrH7sxVmm')
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error: EmailJSResponseStatus) => {
+          console.log('FAILED...', error.text);
+        }
+      );
+  }
+
+}
+/*   private serviceID: string = 'service_rh4ook3';
   private templateID: string = 'template_pvao5ik';
   private userID: string = 'Rra6DMv3qrH7sxVmm';
     
@@ -54,5 +93,4 @@ export class BrideInformationComponent implements OnInit{
         confirmButtonText: 'OK'
      });
     });
-  }
-}
+  }*/
