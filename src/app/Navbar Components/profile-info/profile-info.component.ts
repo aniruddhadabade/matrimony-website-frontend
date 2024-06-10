@@ -128,7 +128,7 @@ export class ProfileInfoComponent implements OnInit {
     const educationCareerId = this.userInfo.educationCareer.id;
     const familyInfoId = this.userInfo.familyInfo.id;
     const personalInfoId = this.userInfo.personalInfo.id;
-    const originalUserInfo = JSON.parse(JSON.stringify(this.userInfo));
+    //const originalUserInfo = JSON.parse(JSON.stringify(this.userInfo));
     const formData = new FormData();
     formData.append('bloodGroup', this.userInfo.personalInfo.bloodGroup);
     formData.append('registration', JSON.stringify(this.userInfo.registrationInfo));
@@ -187,7 +187,7 @@ export class ProfileInfoComponent implements OnInit {
           registration: registrationInfo
         };
 
-        const hasChanges = JSON.stringify(originalUserInfo) !== JSON.stringify(this.userInfo);
+      //  const hasChanges = JSON.stringify(originalUserInfo) !== JSON.stringify(this.userInfo);
         if (!this.userInfo.educationCareer.id) {
           console.error('Education career ID is missing:', this.userInfo.educationCareer);
         }
@@ -197,12 +197,9 @@ export class ProfileInfoComponent implements OnInit {
         if (!this.userInfo.personalInfo.id) {
           console.error('Personal info ID is missing:', this.userInfo.personalInfo);
         }
-
-        if (hasChanges) {
+     
           Swal.fire('Success', 'Profile updated successfully', 'success');
-        } else {
-          Swal.fire('Info', 'No changes were made to the profile', 'info');
-        }
+        
       },
       error: (error) => {
         console.error('Error updating profile:', error);

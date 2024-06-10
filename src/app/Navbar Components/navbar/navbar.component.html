@@ -16,7 +16,7 @@
         <li><a routerLink="/location-booking" routerLinkActive="active">Location Booking</a></li>
       </ul>
     </div>
-    <img [src]="'data:image/jpeg;base64,' + userInfo.personalInfo.photograph" class="user-pic" (click)="toggleMenu()">
+    <img [src]="'data:image/jpeg;base64,' + userInfo?.personalInfo?.photograph" class="user-pic" (click)="toggleMenu()">
     <div class="sub-menu-wrap" [ngClass]="{ 'open-menu': isSubMenuOpen }">
       <div class="sub-menu">
         <div class="user-info">

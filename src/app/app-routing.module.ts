@@ -45,7 +45,7 @@ const routes: Routes = [
   { path : 'service1' , component : Service1Component},
   { path : 'contact1' , component : Contact1Component},
   { path: 'verify-email', component: VerifyEmailComponent },
-  { path: 'service', component: ServiceComponent },
+  { path: 'service', component: ServiceComponent , canActivate: [authGuard]},
   { path: 'user/:userName', component: UserInfoComponent },
   { path: 'personal/:userName', component: PersonalInfoComponent },
   { path: 'edu/:userName', component: EduInfoComponent },
