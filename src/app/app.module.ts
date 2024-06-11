@@ -44,6 +44,7 @@ import { ContactDataComponent } from './Admin Components/contact-data/contact-da
 import { MessageDataComponent } from './Admin Components/message-data/message-data.component';
 import { RegistrationDataComponent } from './Admin Components/registration-data/registration-data.component';
 import { ProfileInfoComponent } from './Navbar Components/profile-info/profile-info.component';
+import { SettingsPrivacyComponent } from './Navbar Components/settings-privacy/settings-privacy.component';
 
 
 
@@ -84,6 +85,7 @@ import { ProfileInfoComponent } from './Navbar Components/profile-info/profile-i
     MessageDataComponent,
     RegistrationDataComponent,
     ProfileInfoComponent,
+    SettingsPrivacyComponent,
   ],
   imports: [
     BrowserModule,

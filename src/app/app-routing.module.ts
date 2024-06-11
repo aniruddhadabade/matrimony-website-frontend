@@ -33,6 +33,7 @@ import { ContactDataComponent } from './Admin Components/contact-data/contact-da
 import { RegistrationDataComponent } from './Admin Components/registration-data/registration-data.component';
 import { authGuard } from './userDetails/guards/auth.guard';
 import { ProfileInfoComponent } from './Navbar Components/profile-info/profile-info.component';
+import { SettingsPrivacyComponent } from './Navbar Components/settings-privacy/settings-privacy.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -64,7 +65,8 @@ const routes: Routes = [
   { path: 'message', component: MessageDataComponent, canActivate: [authGuard]},
   { path: 'admin/contactinfo', component: ContactDataComponent, canActivate: [authGuard]},
   { path: 'admin/registrationinfo', component: RegistrationDataComponent, canActivate: [authGuard]},
-  { path: 'profile', component: ProfileInfoComponent, canActivate: [authGuard]}
+  { path: 'profile', component: ProfileInfoComponent, canActivate: [authGuard]},
+  { path: 'settings', component: SettingsPrivacyComponent, canActivate: [authGuard]}
 ];
 
 @NgModule({
