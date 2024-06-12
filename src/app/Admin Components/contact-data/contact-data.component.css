@@ -82,7 +82,11 @@ table tbody tr {
     transition: background-color 0.3s ease;
   }
 
-  
+  .actions .reply {
+    background-color: #2adf33; 
+    color: white;
+    margin-right: 10px;
+  }
   .actions .delete {
     background-color: #dc3545; 
     color: white;

@@ -22,7 +22,7 @@ import { Contact1Component } from './Navbar Components/contact1/contact1.compone
 import { GroomInformationComponent } from './websiteServices/groom-information/groom-information.component';
 import { ResetPasswordComponent } from './userDetails/reset-password/reset-password.component';
 import { AdminComponent } from './Admin Components/admin/admin.component';
-import { LocationBookingComponent } from './Navbar Components/location-booking/location-booking.component';
+import { LocationBookingComponent } from './websiteServices/location-booking/location-booking.component';
 import { GroomsComponent } from './websiteServices/grooms/grooms.component';
 import { BridesComponent } from './websiteServices/brides/brides.component';
 import { BrideInformationComponent } from './websiteServices/bride-information/bride-information.component';
@@ -34,6 +34,9 @@ import { RegistrationDataComponent } from './Admin Components/registration-data/
 import { authGuard } from './userDetails/guards/auth.guard';
 import { ProfileInfoComponent } from './Navbar Components/profile-info/profile-info.component';
 import { SettingsPrivacyComponent } from './Navbar Components/settings-privacy/settings-privacy.component';
+import { ChatDataComponent } from './Navbar Components/chat-data/chat-data.component';
+import { LocationBookingDataComponent } from './Navbar Components/location-booking-data/location-booking-data.component';
+import { ReplyformComponent } from './Admin Components/replyform/replyform.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -66,7 +69,10 @@ const routes: Routes = [
   { path: 'admin/contactinfo', component: ContactDataComponent, canActivate: [authGuard]},
   { path: 'admin/registrationinfo', component: RegistrationDataComponent, canActivate: [authGuard]},
   { path: 'profile', component: ProfileInfoComponent, canActivate: [authGuard]},
-  { path: 'settings', component: SettingsPrivacyComponent, canActivate: [authGuard]}
+  { path: 'settings', component: SettingsPrivacyComponent, canActivate: [authGuard]},
+  { path: 'chatdata', component: ChatDataComponent, canActivate: [authGuard]},
+  { path: 'bookings', component: LocationBookingDataComponent, canActivate: [authGuard]},
+  { path: 'reply', component: ReplyformComponent, canActivate: [authGuard]}
 ];
 
 @NgModule({

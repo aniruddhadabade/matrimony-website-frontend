@@ -1,7 +1,6 @@
 <body>
   <input type="checkbox" id="menu-toggle">
   <div class="sidebar">
-     
       <div class="side-content">
           <div class="profile">
               <div class="profile-img bg-img" style="background-image: url(/assets/images/bride.jpg)"></div>
@@ -19,10 +18,7 @@
               <li><a routerLink="/location-booking" routerLinkActive="active"><span class="las la-tasks"></span><small>Location Booking</small></a></li>
               <li><button class="logout-button" (click)="logout()">Logout</button></li>
           </ul>
-          </div>
-
-          
-          
+          </div>      
       </div>
   </div>
   
@@ -60,6 +56,12 @@
                 <a [routerLink]="['/admin/contactinfo']" class="card-link">
                 <div class="card">
                   <div class="card-head"><h2>{{ totalQueries }}</h2><span class="las la-envelope"></span></div>
+                  <div class="card-progress"><small>New Queries received</small><div class="card-indicator"><div class="indicator four" style="width: 90%"></div></div></div>
+                </div>
+              </a>
+              <a [routerLink]="['/admin/contactinfo']" class="card-link">
+                <div class="card">
+                  <div class="card-head"><h2>{{ totalLocations }}</h2><span class="las la-envelope"></span></div>
                   <div class="card-progress"><small>New Queries received</small><div class="card-indicator"><div class="indicator four" style="width: 90%"></div></div></div>
                 </div>
               </a>

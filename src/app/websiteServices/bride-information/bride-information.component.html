@@ -53,14 +53,13 @@
               <input type="text" name="lastName" [value]="user?.lastName" />
               <input type="text" name="email" [value]="user?.email" />
             </form>
-    
-    
-            
+        
             <div class="buttons-container mt-3">
-              <button class="btn btn-primary mr-2" routerLink="/chat" >Chat</button>
+              <button class="btn btn-primary mr-2" (click) = "OnChatClick()">Chat</button>
               <button type="button" class="btn btn-secondary" [disabled]="interestBtnDisabled" (click)="onClick($event)">
                 {{intrestButton}} <i class="fa fa-check"></i>
               </button>
+              <button class="btn btn-primary mr-2" (click) = "OnLocationClick()">Location Booking</button>
             </div>
           </div>
         </div>

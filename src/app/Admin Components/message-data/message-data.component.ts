@@ -17,7 +17,7 @@ export class MessageDataComponent implements OnInit{
   }
 
   fetchMessages(): void {
-    this.messageService.getMessages().subscribe(
+    this.messageService.getAllMessage().subscribe(
       data => {
         this.messages = data;
       },

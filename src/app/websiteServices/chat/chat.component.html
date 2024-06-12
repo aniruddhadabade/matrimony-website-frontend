@@ -4,17 +4,9 @@
     <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="fromUsername">From Username:</label><br>
-        <input type="text" id="fromUsername" formControlName="fromUsername"><br>
+        <input type="text" id="fromUsername" formControlName="fromUsername" [disabled]="true"><br>
         <div *ngIf="chatForm.controls['fromUsername'].touched && !chatForm.controls['fromUsername'].valid">
           <small>From Username is required.</small>
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <label for="toUsername">To Username:</label><br>
-        <input type="text" id="toUsername" formControlName="toUsername"><br>
-        <div *ngIf="chatForm.controls['toUsername'].touched && !chatForm.controls['toUsername'].valid">
-          <small>To Username is required.</small>
         </div>
       </div>
   
@@ -27,7 +19,6 @@
       </div>
 
       <button type="submit" class="btn btn-primary">Send</button>
-      <button type="button" (click)="onClear()" class="btn btn-primary">Clear</button>
     </form>
   </div>
 </div>

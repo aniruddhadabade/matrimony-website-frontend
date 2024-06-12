@@ -38,6 +38,10 @@ export class RegistrationInfoService {
     return this.httpClient.get(`${this.baseUrl}/username/${userName}`);
   }
 
+  findByEmail(email: string): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/email/${email}`);
+  }
+
   updateRegistration(id: number, updatedInfo: RegistrationInfo): Observable<RegistrationInfo> {
     return this.httpClient.put<RegistrationInfo>(`${this.baseUrl}/${id}`, updatedInfo);
   }

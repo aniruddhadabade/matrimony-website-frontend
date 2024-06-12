@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ContactInfo } from '../models/contactInfo';
 import { Observable } from 'rxjs';
+import { Reply } from '../models/reply';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +10,16 @@ import { Observable } from 'rxjs';
 export class ContactinfoService {
 
   private baseUrl = 'http://localhost:8080/api/contact';
-
+  private apiUrl1 = 'http://localhost:8080/reply/';
   constructor(private httpClient: HttpClient) {}
 
   createContact(contact: ContactInfo): Observable<ContactInfo> {
     return this.httpClient.post<ContactInfo>(this.baseUrl, contact);
   }
 
+  saveReply(reply: Reply): Observable<Reply> {
+    return this.httpClient.post<Reply>(this.apiUrl1, reply);
+  }
   getAllContacts(): Observable<ContactInfo[]> {
     return this.httpClient.get<ContactInfo[]>(this.baseUrl);
   }

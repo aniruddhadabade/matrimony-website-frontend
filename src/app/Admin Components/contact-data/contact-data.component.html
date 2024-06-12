@@ -17,6 +17,7 @@
         <td>{{ contact.message }}</td>
         <td>
           <div class="actions">
+            <button class="reply"  (click)="handleAction(contact)">Reply</button>
             <button class="delete" (click)="deleteContact(contact.contactId)">Delete</button>
           </div>
         </td>

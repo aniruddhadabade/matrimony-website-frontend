@@ -58,6 +58,18 @@ export class BrideInformationComponent implements OnInit{
       );
   }
 
+  OnLocationClick(){
+    this.router.navigate(['/location-booking'], {
+      state: { user: this.user }
+    });
+  }
+
+  OnChatClick(){
+    this.router.navigate(['/chat'], {
+      state: { user: this.user }
+    });
+  }
+
 }
 /*   private serviceID: string = 'service_rh4ook3';
   private templateID: string = 'template_pvao5ik';

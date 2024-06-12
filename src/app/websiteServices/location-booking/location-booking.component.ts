@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MessageService } from '../../services/message.service';
-import { RegistrationInfoService } from '../../services/registration-info.service';
 import { Router } from '@angular/router';
-import { Message } from '../../models/message';
+import { RegistrationInfoService } from '../../services/registration-info.service';
+import { LocationService } from '../../services/location.service';
+import { Location } from '../../models/location';
 import Swal from 'sweetalert2';
 import { RegistrationInfo } from '../../models/registrationInfo';
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrl: './chat.component.css'
+  selector: 'app-location-booking',
+  templateUrl: './location-booking.component.html',
+  styleUrl: './location-booking.component.css'
 })
-export class ChatComponent implements OnInit{
+export class LocationBookingComponent implements OnInit{
   user!: any;
-  userName!: string;
-  loggedInUser!: string | null;
-  chatForm!: FormGroup;
-  registration!: RegistrationInfo;
+  userName!: any;
+  loggedInUser!: any;
+  interestForm!: FormGroup;
+  registration!:any;
 
   constructor(
     private fb: FormBuilder,
-    private messageService: MessageService,
+    private locationService: LocationService,
     private registrationInfoService: RegistrationInfoService,
     private router: Router
   ) {}
@@ -32,29 +32,30 @@ export class ChatComponent implements OnInit{
 
     console.log(this.userName);
 
-    this.chatForm = this.fb.group({
-      fromUsername: [this.loggedInUser, Validators.required], // Assign the logged-in user's username to fromUsername
-      message: ['', Validators.required],
+    this.interestForm = this.fb.group({
+      name: [this.loggedInUser, Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      location: ['', Validators.required],
+      date: ['', Validators.required],
+      time: ['', Validators.required],
     });
 
-    this.loadRegistrationDetails();
+    this.registration = this.loadRegistrationDetails()
   }
 
   onSubmit(): void {
-    if (this.chatForm.valid && this.registration) {
-      const message: Message = {
-        ...this.chatForm.value,
-        toUsername: this.registration.userName,
-        sentTime: new Date(),
-        registration: this.registration
-      };
-      
-      this.messageService.saveMessage(message).subscribe(
+    console.log(this.registration)
+    if (this.interestForm.valid) {
+        const location: Location = {
+          ...this.interestForm.value,
+          registration: this.registration
+        };
+      this.locationService.saveLocation(location).subscribe(
         response => {
           console.log('Message saved successfully', response);
           // Navigate or give feedback to the user
           this.router.navigate(['/page']);
-          // alert
+          //alert
           const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -68,7 +69,7 @@ export class ChatComponent implements OnInit{
           });
           Toast.fire({
             icon: "success",
-            title: "Message Sent Successfully"
+            title: "Location Booking Successfully"
           });
         },
         error => {

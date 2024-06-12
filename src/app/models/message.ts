@@ -1,8 +1,10 @@
+import { RegistrationInfo } from "./registrationInfo";
+
 export class Message {
     id?: number;
-    messageId!: number; 
     fromUsername!: string;
     toUsername!: string;
     message!: string;
-    
+    sentTime?: string;
+    registrationInfo!: RegistrationInfo;
 }

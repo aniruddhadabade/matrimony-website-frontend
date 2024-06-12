@@ -34,7 +34,7 @@ import { ROUTES, RouterModule } from '@angular/router';
 import App from 'next/app';
 import { ResetPasswordComponent } from './userDetails/reset-password/reset-password.component';
 import { AdminComponent } from './Admin Components/admin/admin.component';
-import { LocationBookingComponent } from './Navbar Components/location-booking/location-booking.component';
+import { LocationBookingComponent } from './websiteServices/location-booking/location-booking.component';
 import { GroomsComponent } from './websiteServices/grooms/grooms.component';
 import { BridesComponent } from './websiteServices/brides/brides.component';
 import { BrideInformationComponent } from './websiteServices/bride-information/bride-information.component';
@@ -45,6 +45,9 @@ import { MessageDataComponent } from './Admin Components/message-data/message-da
 import { RegistrationDataComponent } from './Admin Components/registration-data/registration-data.component';
 import { ProfileInfoComponent } from './Navbar Components/profile-info/profile-info.component';
 import { SettingsPrivacyComponent } from './Navbar Components/settings-privacy/settings-privacy.component';
+import { ChatDataComponent } from './Navbar Components/chat-data/chat-data.component';
+import { LocationBookingDataComponent } from './Navbar Components/location-booking-data/location-booking-data.component';
+import { ReplyformComponent } from './Admin Components/replyform/replyform.component';
 
 
 
@@ -86,6 +89,9 @@ import { SettingsPrivacyComponent } from './Navbar Components/settings-privacy/s
     RegistrationDataComponent,
     ProfileInfoComponent,
     SettingsPrivacyComponent,
+    ChatDataComponent,
+    LocationBookingDataComponent,
+    ReplyformComponent,
   ],
   imports: [
     BrowserModule,

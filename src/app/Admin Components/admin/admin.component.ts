@@ -9,6 +9,7 @@ import { PersonalInfoService } from '../../services/personal-info.service';
 import { FamillyInfoService } from '../../services/familly-info.service';
 import { EducationInfoService } from '../../services/education-info.service';
 import { RegistrationInfoService } from '../../services/registration-info.service';
+import { LocationService } from '../../services/location.service';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin.component.html',
@@ -24,6 +25,7 @@ export class AdminComponent implements OnInit{
   totalRegistrations: number = 0;
   totalMessages: number = 0;
   totalQueries: number = 0;
+  totalLocations: number = 0;
 
   constructor(
     private userService: UserinfoService,
@@ -33,7 +35,8 @@ export class AdminComponent implements OnInit{
     private registrationsService: RegistrationInfoService,
     private educationCareerService: EducationInfoService,
     private familyInfoService: FamillyInfoService,
-    private personalInfoService: PersonalInfoService
+    private personalInfoService: PersonalInfoService,
+    private locationService: LocationService
   ) {}
 
   ngOnInit(): void {
@@ -136,7 +139,7 @@ export class AdminComponent implements OnInit{
   }
 
   fetchTotalMessages(): void {
-    this.messageService.getMessages().subscribe(
+    this.messageService.getAllMessage().subscribe(
       (messages: any[]) => {
         this.totalMessages = messages.length;
       },
@@ -155,6 +158,17 @@ export class AdminComponent implements OnInit{
         console.error('Error fetching contacts:', error);
       }
     );
+  }
+
+  fetchTotalLocations(): void{
+    this.locationService.getAllLocation().subscribe(
+      (locations: any[]) => {
+        this.totalLocations = locations.length;
+      },
+      (error) => {
+        console.error('Error fetching contacts:', error);
+      }
+    )
   }
 
   viewDetails(user: any): void {

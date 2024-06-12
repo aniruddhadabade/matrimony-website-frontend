@@ -1,27 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { Message } from '../models/message';
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  rid: number | undefined;
-
   private baseUrl = 'http://localhost:8080/api/message'; 
 
   constructor(private httpClient: HttpClient) {}
 
-  addMessage(message: any): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}`, message);
+  saveMessage(Message: Message): Observable<Message> {
+    return this.httpClient.post<Message>(this.baseUrl, Message);
   }
 
-  getMessages(): Observable<any[]> {
-    return this.httpClient.get<any[]>(`${this.baseUrl}`);
+  getMessageById(id: number): Observable<Message> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.httpClient.get<Message>(url);
   }
-  
-  deleteMessage(msgId: number): Observable<any> {
-    return this.httpClient.delete<any>(`${this.baseUrl}/${msgId}`);
+
+  getAllMessage(): Observable<Message[]> {
+    return this.httpClient.get<Message[]>('http://localhost:8080/api/message/all');
+  }
+ /* getAllReply(email: string): Observable<Reply[]> {
+    const url = `${this.baseUrl1}/get/${email}`;
+    return this.http.get<Reply[]>(url);
+  }
+*/
+
+
+  updateMessage(id: number, Message: Message): Observable<Message> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.httpClient.put<Message>(url, Message);
+  }
+
+  deleteMessage(id: number): Observable<void> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.httpClient.delete<void>(url);
   }
 }
